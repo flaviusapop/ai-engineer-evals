@@ -1,0 +1,209 @@
+{
+  "last_in_window_index": 787,
+  "last_in_window_id": "WE_Gnowy3uw",
+  "last_in_window_upload_date": "2026-04-30",
+  "first_outside_index": 788,
+  "first_outside_id": "MhHEGMFCEB0",
+  "first_outside_upload_date": "2026-04-29",
+  "note": "Exhaustive inventory is ordered newest to oldest; relative timestamp buckets misleadingly assign May 1 to many April uploads. Exact adjacent videos establish inclusive cutoff. Dates for unextracted older entries are not fabricated.",
+  "anchors": [
+    {
+      "index": 723,
+      "id": "JomVvNDjGb8",
+      "title": "Your Coding Agent Should Do AI System Engineering — Ben Burtenshaw, Hugging Face",
+      "date": "2026-05-21",
+      "url": "https://www.youtube.com/watch?v=JomVvNDjGb8",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": true
+    },
+    {
+      "index": 732,
+      "id": "mR-WAvEPRwE",
+      "title": "Anthropic Workshop: Build Agents That Run for Hours — Ash Prabaker & Andrew Wilson",
+      "date": "2026-05-18",
+      "url": "https://www.youtube.com/watch?v=mR-WAvEPRwE",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": true
+    },
+    {
+      "index": 737,
+      "id": "kfSDc2eVLo4",
+      "title": "How to Leverage Domain Expertise — Chris Lovejoy, Notius Labs",
+      "date": "2026-05-16",
+      "url": "https://www.youtube.com/watch?v=kfSDc2eVLo4",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": true
+    },
+    {
+      "index": 742,
+      "id": "Xfl50508LZM",
+      "title": "Ship Real Agents: Hands-On Evals for Agentic Applications — Laurie Voss, Arize",
+      "date": "2026-05-14",
+      "url": "https://www.youtube.com/watch?v=Xfl50508LZM",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": true
+    },
+    {
+      "index": 750,
+      "id": "4VhbYlfC7Gs",
+      "title": "Malleable Evals: Why Are We Evaluating Adaptive Systems with Static Tests? — Vincent Koc, OpenClaw",
+      "date": "2026-05-12",
+      "url": "https://www.youtube.com/watch?v=4VhbYlfC7Gs",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": true
+    },
+    {
+      "index": 770,
+      "id": "Lm8BLHkxiAo",
+      "title": "Accelerating AI on Edge — Chintan Parikh and Weiyi Wang, Google DeepMind",
+      "date": "2026-05-05",
+      "url": "https://www.youtube.com/watch?v=Lm8BLHkxiAo",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": true
+    },
+    {
+      "index": 780,
+      "id": "W76woOYHlvY",
+      "title": "Software Engineering Is Becoming Plan and Review — Louis Knight-Webb, Vibe Kanban",
+      "date": "2026-05-02",
+      "url": "https://www.youtube.com/watch?v=W76woOYHlvY",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": true
+    },
+    {
+      "index": 783,
+      "id": "ZdheJTfLu-s",
+      "title": "Shipping complex AI applications — Braintrust & Trainline",
+      "date": "2026-05-01",
+      "url": "https://www.youtube.com/watch?v=ZdheJTfLu-s",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": true
+    },
+    {
+      "index": 785,
+      "id": "cVzf49yg0D8",
+      "title": "Building Conversational Agents — Thor Schaeff and Philipp Schmid, Google DeepMind",
+      "date": "2026-04-30",
+      "url": "https://www.youtube.com/watch?v=cVzf49yg0D8",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": true
+    },
+    {
+      "index": 786,
+      "id": "juoNbJiZUi0",
+      "title": "LLM codegen fails and how to stop 'em — Danilo Campos, PostHog",
+      "date": "2026-04-30",
+      "url": "https://www.youtube.com/watch?v=juoNbJiZUi0",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": true
+    },
+    {
+      "index": 787,
+      "id": "WE_Gnowy3uw",
+      "title": "Replacing 12K LoC with a 200 LoC Skill — David Gomes, Cursor",
+      "date": "2026-04-30",
+      "url": "https://www.youtube.com/watch?v=WE_Gnowy3uw",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": true
+    },
+    {
+      "index": 788,
+      "id": "MhHEGMFCEB0",
+      "title": "OpenAI Codex Masterclass  — Vaibhav Srivastav & Katia Gil Guzman",
+      "date": "2026-04-29",
+      "url": "https://www.youtube.com/watch?v=MhHEGMFCEB0",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": false
+    },
+    {
+      "index": 789,
+      "id": "G_bHFmEAarM",
+      "title": "Build & deploy AI-powered apps — Paige Bailey, Google DeepMind",
+      "date": "2026-04-29",
+      "url": "https://www.youtube.com/watch?v=G_bHFmEAarM",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": false
+    },
+    {
+      "index": 790,
+      "id": "fLUtUkqYHnQ",
+      "title": "Everything I Learned Training Frontier Small Models — Maxime Labonne, Liquid AI",
+      "date": "2026-04-29",
+      "url": "https://www.youtube.com/watch?v=fLUtUkqYHnQ",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": false
+    },
+    {
+      "index": 791,
+      "id": "rnDm57Py54A",
+      "title": "Building your own software factory — Eric Zakariasson, Cursor",
+      "date": "2026-04-28",
+      "url": "https://www.youtube.com/watch?v=rnDm57Py54A",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": false
+    },
+    {
+      "index": 792,
+      "id": "_fQ7Z_Wfouk",
+      "title": "Why building eval platforms is hard — Phil Hetzel, Braintrust",
+      "date": "2026-04-28",
+      "url": "https://www.youtube.com/watch?v=_fQ7Z_Wfouk",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": false
+    },
+    {
+      "index": 800,
+      "id": "-QFHIoCo-Ko",
+      "title": "Full Walkthrough: Workflow for AI Coding — Matt Pocock",
+      "date": "2026-04-24",
+      "url": "https://www.youtube.com/watch?v=-QFHIoCo-Ko",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": false
+    },
+    {
+      "index": 801,
+      "id": "R7A8rX-09Zw",
+      "title": "What Do Models Still Suck At? - Peter Gostev, Arena.ai, BullshitBench",
+      "date": "2026-04-24",
+      "url": "https://www.youtube.com/watch?v=R7A8rX-09Zw",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": false
+    },
+    {
+      "index": 810,
+      "id": "_gVFUEdhCyI",
+      "title": "Gemma, DeepMind's Family of Open Models — Omar Sanseviero, Google DeepMind",
+      "date": "2026-04-20",
+      "url": "https://www.youtube.com/watch?v=_gVFUEdhCyI",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": false
+    },
+    {
+      "index": 819,
+      "id": "YZHPEkfy2kc",
+      "title": "$1 AI Guardrails: The Unreasonable Effectiveness of Finetuned ModernBERTs – Diego Carpintero",
+      "date": "2026-04-16",
+      "url": "https://www.youtube.com/watch?v=YZHPEkfy2kc",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": false
+    },
+    {
+      "index": 822,
+      "id": "X4dEHRzBLmc",
+      "title": "Judge the Judge: Building LLM Evaluators That Actually Work with GEPA — Mahmoud Mabrouk, Agenta AI",
+      "date": "2026-04-10",
+      "url": "https://www.youtube.com/watch?v=X4dEHRzBLmc",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": false
+    },
+    {
+      "index": 835,
+      "id": "k1t2xyWMUdY",
+      "title": "How METR measures Long Tasks and Experienced Open Source Dev Productivity - Joel Becker, METR",
+      "date": "2026-01-19",
+      "url": "https://www.youtube.com/watch?v=k1t2xyWMUdY",
+      "source": "YouTube exact upload-date metadata, not inventory relative timestamp",
+      "in_window": false
+    }
+  ]
+}
