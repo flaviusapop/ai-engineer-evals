@@ -1,0 +1,25 @@
+A leaderboard can narrow the field, but it answers a question about the tasks, candidates and scoring procedure on that board—not automatically which model will serve your users best. Use it to choose candidates for a decision, then test the relevant task and the assembled application. A higher score is evidence of performance under a particular measurement, not a general reliability guarantee. [cite:hqHC6Z_lXyo:c01] [cite:vljxQZfJ9wY:c01]
+
+## Read the ranking before choosing the winner
+
+Ask what the board measures, which models and versions it includes, how examples were selected and scored, and whether its task mix resembles yours. Image editing illustrates why: object removal, background changes and text editing can have different rankings, so a team primarily removing objects should inspect that slice rather than assume the aggregate winner is best for it. The speaker describes category plots, not a complete dataset or a statistical test establishing the ranking for every application. [cite:hqHC6Z_lXyo:c02]
+
+Multiple boards can disagree because they sample different tasks or participants, use different scoring methods or contain duplicate model entries. Even similar-looking Elo values need not share a scale across sites. A small rank difference is not, by itself, proof of either a meaningful advantage or equivalence. Product-specific rubric scores can be useful for improving one application while being unsuitable for ranking different products whose rubrics and tastes differ. [cite:hqHC6Z_lXyo:c01] [cite:mR-WAvEPRwE:c16]
+
+Disagreement about the verifier matters too. One speaker attributes a 0.3% false-positive claim to DeepSWE and a 44.9% critique to Frontier Code. The available account does not supply comparable sampling or denominators, so neither number resolves the dispute. The same speaker initially suggests averaging benchmarks but acknowledges the unresolved choice of weights. An average cannot repair incomparable audits: retain their provenance, show task composition and justify any weights against the actual decision. [cite:uIiA6DquRiE:c09] For designing that distribution, see [[design-evaluation-distributions-for-decisions]].
+
+## Compare the model and the complete system separately
+
+Decide which difference you are trying to estimate. To compare **models under a common setup**, hold the tasks, prompts, tools, scoring and other feasible settings constant, record necessary model-specific differences, and interpret the result as conditional on that setup. To choose a **deployable stack**, compare the candidate configurations—including their prompts, retrieval, tools and runtime—under the same user-relevant scenarios and budget. That comparison can answer which configuration worked better, but cannot attribute the entire difference to model weights when other components changed.
+
+A hosted provider's tests do not test the application team's particular context and integrations. For example, an agent can answer benchmark questions well yet fail when a tool is unavailable or a workflow extends across multiple steps. Test capability offline, test the assembled workflow on representative scenarios, and observe it in use; these layers answer different questions. The proposed greater operational value of production telemetry is a speaker's framework, not a measured ranking of evidence sources. [cite:NKwIX3CiRgU:c02] [cite:vljxQZfJ9wY:c05] [cite:vljxQZfJ9wY:c06]
+
+The capability ceiling is also distinct from the failure floor: an impressive successful demonstration does not establish that the application avoids unwanted emails or destructive actions. Assess consequences alongside task success rather than assuming a better general score removes the need for controls. [cite:jHMiYtjoJfA:c04] See [[agent-contracts-completion-and-oversight]] for those boundaries.
+
+## Treat hindsight as headroom, not a shipped result
+
+A retrieval experiment indexed the same material at several chunk sizes and, knowing the answers, chose the best size separately for each query. Comparing that hindsight oracle with one fixed size shows potential benefit from query-dependent selection; it does not provide a way to pick the right size for a new query. The reported percentage convention is unclear, so the headroom should not be converted into a precise deployable gain. A practical fusion method must be evaluated separately; its reported recall results are not final-answer quality results. [cite:r9OwPx_HoV0:c04] [cite:r9OwPx_HoV0:c09]
+
+## Keep the comparison alive
+
+A published ranking is a snapshot. Models can be replaced or withdrawn and an endpoint can change behind a familiar name. Record the model and endpoint identity as far as observable, configuration, task set, scoring and run date; retain historical artifacts and rerun the relevant comparison when candidates or the stack change. If a provider does not expose an immutable identity, record that limitation instead of claiming exact reproducibility. [cite:Ubwb6NzegyA:c03] [cite:Ubwb6NzegyA:c11]

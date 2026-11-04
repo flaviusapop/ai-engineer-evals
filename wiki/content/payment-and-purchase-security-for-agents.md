@@ -1,0 +1,31 @@
+A purchase is not one decision. An agent discovers a seller, receives final payment requirements, signs, and receives a result; the seller verifies payment and fulfills it. Each transition can change what is being trusted. A directory listing does not prove who owns the wallet, a valid signature does not prove settlement, and one successful payment check does not protect an alternate route to the same content. The examples below come from controlled experiments and speaker recommendations, not measured production loss rates. [cite:YU1uD_YkpjU:c01] [cite:YU1uD_YkpjU:c04] [cite:YU1uD_YkpjU:c08]
+
+## Approve the seller and bind the final terms
+
+Treat a discovered service as a candidate, not an authenticated counterparty. In the setup described by the speaker, the directory checked that a service worked, not who operated it or owned its payment wallet. A look-alike name and a lower price can therefore attract a buyer to the wrong seller. This is a characterization of that tested discovery system, not an audit of every directory. Apply a seller-approval policy that associates the identity with its authorized payment details. [cite:YU1uD_YkpjU:c08]
+
+A strict allowlist is appropriate when exploration is unacceptable, but can become stale when a legitimate seller changes domain, wallet, network, currency or price. The speaker proposes approved, blocked and probationary lists, with human review for newly discovered sellers. That is a policy design, not a validated review schedule: decide explicitly what a probationary seller may do before review rather than treating probation as automatic permission to spend. [cite:YU1uD_YkpjU:c09]
+
+Immediately before signing, compare the seller's final payment request with the approved terms, including price, recipient wallet and network. In a controlled test, a listing advertised five cents but the payment request asked for fifty; the unguarded buyer paid, while a deterministic price comparison blocked the changed amount. Wallet and network substitution were additional risks discussed, not separately demonstrated comprehensive protections. A correct price alone cannot identify the intended recipient. [cite:YU1uD_YkpjU:c01]
+
+## Enforce the purchase plan, not just the wording
+
+Seller-supplied content is evidence about an offer, not authority to expand the buyer's mandate. In a controlled one-purchase task, a seller suggested a more complete summary elsewhere and the model attempted another purchase. Keyword checks missed indirect suggestions and a model classifier could miss attacks too. A deterministic guard enforcing the approved one-call plan blocked the extra payment even though the agent still requested it. The reported zero successful attacks applies only to that constrained guarded experiment, not general immunity to prompt injection. [cite:YU1uD_YkpjU:c10]
+
+For a legitimate multi-purchase task, approve an appropriately scoped plan instead of applying a universal one-call rule: specify the permitted items or sellers and limits, and require a fresh decision when the proposed action falls outside that scope. This is a purchase-specific control; the broader authority boundary is covered in [[agent-authority-isolation-and-runtime-controls]].
+
+## Separate verification, settlement and fulfillment
+
+A facilitator may verify a payment signature even though settlement later fails, for example because funds are insufficient or state is inconsistent. If the seller has already delivered confidential data, activated a license or provisioned a valuable service, it may be too late to recover the value. Waiting for settlement reduces that exposure but adds latency. For inexpensive, reversible, latency-sensitive output, earlier delivery may be a deliberate business risk; the source supplies no numeric threshold. [cite:YU1uD_YkpjU:c04]
+
+Verification alone also does not make repeated fulfillment safe. Several requests with the same payment identifier may all appear valid before only one settles. Keep shared state for identifiers in progress and completed, and return the saved result for a repeat of the same purchase rather than independently fulfilling it again. Bind the identifier to the specific resource delivered: if a request reuses it for a different paid page, reject the conflict rather than deliver a second item for one payment. The speaker proposes a 409 conflict response. [cite:YU1uD_YkpjU:c02] [cite:YU1uD_YkpjU:c07]
+
+This ledger is a design requirement, not a complete implementation from the source. In particular, multiple workers must not both claim the same identifier before either records it; the talk does not specify atomic claim acquisition, concurrent processing, or a resource-identity schema. Those details need explicit design and testing before the proposed protection can be relied on. [cite:YU1uD_YkpjU:c02]
+
+The buyer faces the inverse risk after a timeout: in the described x402 payment-number flow, a retry with a *new* payment number can be treated as another valid charge for the same desired result. The speaker advises reusing the original payment number across retries. This guidance is specific to that flow, not a complete timeout-recovery procedure or a rule for every payment API. [cite:YU1uD_YkpjU:c03]
+
+## Protect every route to the purchased result
+
+A cryptographically correct payment flow cannot protect a report that is also served by an unprotected endpoint. Inventory all routes intended to be paid, including alternate representations, and request each without payment: the recommended negative test expects payment-required behavior before content is released. The source does not provide an exhaustive route inventory or an automated test implementation. [cite:YU1uD_YkpjU:c05]
+
+Caches are another route. In the scenario discussed, a paid response cached under a public URL was available to later buyers without another payment. Keep cached content behind the authorization check; for confidential, expensive or per-request generated results, consider `Cache-Control: no-store`. The public-cache behavior is specific to the scenario, not a universal HTTP or x402 default, and the talk did not test whether every intermediary obeys the header. Test the actual delivery path rather than treating the header as a guarantee. [cite:YU1uD_YkpjU:c06]

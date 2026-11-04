@@ -1,0 +1,41 @@
+An agent’s task is not defined by a prompt alone, and its assertion that it is done is not proof that the work is ready for use. Define the role and its boundaries independently of the implementation; then require evidence and the appropriate approval for each consequential completion claim.
+
+## Define the task without prescribing every move
+
+A useful agent contract names the intended outcome and why it matters, its inputs and outputs, responsibilities and excluded jobs, required context and integrations, permissions, constraints, and examples of acceptable and unacceptable behavior. A stable task interface lets callers rely on the same input and output shape while the model, prompt, or tool strategy changes. But the signature is not the whole contract: prose conveys intent, executable checks enforce selected requirements, and examples expose aspects of quality that are hard to enumerate. Even together they do not prove that every requirement has been captured. [cite:pSto5YaNGUo:c02] [cite:GgLQ02aO-hs:c01] [cite:GgLQ02aO-hs:c02]
+
+**Illustrative example:** A refund assistant’s role might be to investigate a request and prepare a resolution, using the order record and current policy; it must not issue a refund until identity has been verified. The contract can permit different search sequences to find the order. It cannot treat identity verification as an optional intermediate step merely because the final answer looks plausible. Compose the work as obligations: establish identity, assess eligibility, then obtain any required approval before a refund. Intermediate obligations can constrain a run without prescribing every tool call. A written contract still needs a harness capable of carrying it out; portable text alone does not provide missing tools or subagents. [cite:7T-gldvgfpo:c02] [cite:7T-gldvgfpo:c14] [cite:Xfl50508LZM:c06]
+
+A purpose-oriented instruction is not a substitute for the facts and scaffolding that make it meaningful. Plan close enough to the work to use current knowledge: preserve the problem, goal, user journey, non-negotiable boundaries and rationale, but revise the plan as discoveries change it. The case for just-in-time planning is a practitioner’s critique of exhaustive, fossilized specifications, not evidence that preparation is unnecessary. Prose also does not enforce itself. [cite:2TLXsxkz0zI:c08] [cite:504PvfXou5Y:c02] [cite:504PvfXou5Y:c03]
+
+For choosing the business outcome itself, see [[from-business-problem-to-meaningful-success-criteria]].
+
+## Completion is a set of claims, not a status flag
+
+A completion record should distinguish the artifact and scope delivered from the evidence against the rubric, who verified it, who has authority to approve it, residual risks, and the next owner or action. These fields express claims to be checked; their presence is not proof of correctness. A pull request can exist, have passing tests and a closed issue while merge approval, deployment readiness and customer communication remain separate decisions. [cite:7P0elyLIxXo:c01]
+
+In the illustrative refund case, an agent can report “eligibility assessment prepared,” cite the order and identity-check result, and identify an unresolved policy exception. That does not mean the refund was issued or that someone authorized it. A reviewer should inspect the evidence for the specific approval being requested, not infer it from the agent’s activity. A goal watchdog may encourage continued work, but needs real blocker and bounded-loop rules; persistence does not establish completion. [cite:7P0elyLIxXo:c04] [cite:7P0elyLIxXo:c06]
+
+For a decision product, additional trust controls may include source receipts, clearly separated facts and estimates, checks that related numbers agree, surfaced contradictions, and a logged accountable human approval. These complement model quality; a stronger benchmark score does not itself supply them. The financial-work recommendation is a buyer’s perspective, not a validated implementation or a finding that model quality is irrelevant. [cite:tJFjeMBKbIY:c08] [cite:tJFjeMBKbIY:c09]
+
+## Decide where human judgment remains
+
+A software-factory framing describes repeated planning, building, checking and shipping. In a “lights-on” version people exercise judgment throughout; a “dark” version aims to move them toward intent and exceptions. These are conceptual operating models, not evidence that generated work is inherently safe. In one speaker’s terminology, **autonomy** concerns how much correction an agent needs to reach a suitable result, while **automation** concerns how much human review is still required before acceptance. An agent can solve a task without nudging and still need its entire result reviewed. [cite:AnsXWH2_EBU:c01] [cite:X6l4lpA0_NY:c02]
+
+Before reducing review, identify the verification gap and the risks that remain. For a browser change, a recording or screenshot can show a reviewer what was exercised, but not certify unobserved paths. Labeling agent-written changes can support tracking without transferring accountability away from a human owner. See [[human-review-and-agent-governance]] for governance decisions. [cite:AnsXWH2_EBU:c05] [cite:AnsXWH2_EBU:c09] [cite:AnsXWH2_EBU:c10]
+
+## Identify the system being tested
+
+The **model** produces responses; an **agent runtime harness** surrounds it with the loop, tool registry, context management, guardrails and verification. An **evaluation harness** instead runs cases and scores results. Terminology varies, but a test runner is not a substitute for runtime controls, and an agent loop is only part of the runtime. [cite:C_GG5g38vLU:c01] [cite:C_GG5g38vLU:c02]
+
+The **environment** is where the agent works: infrastructure, resources, incentives and guardrails. A workflow describes how work proceeds; a contract describes what is required. Changing any of these can change results even with the same model. A separate context layer can supply documents while the harness chooses searches and iterates on the results; this is an architectural framing, not proof that retrieval quality has ceased to matter. For comparisons, evaluate the actual model–harness–environment combination rather than attributing every difference to the model. [cite:mMNkdYnIVC4:c01] [cite:RQi7x-navxU:c01] See [[comparing-agents-without-confounding-the-result]].
+
+A **skill** supplies reusable procedural knowledge and judgment; a **tool** supplies an actual capability, such as reading a service. For example, instructions about which feature flags are dangerous to remove cannot by themselves access rollout state. Typed steps are one proposed way to make guidance more inspectable, but the proposal does not establish a measured performance gain; guidance also needs maintenance when its assumptions age. [cite:6MudaeKdBSk:c01] [cite:GmAQKINjv1E:c02] [cite:XPj3mIKEtI4:c05] [cite:6MudaeKdBSk:c13]
+
+A protocol and its client are also distinct. A client that eagerly inserts every tool description and full response into model context may create overhead not required by the protocol; that does not mean protocols have no costs of their own. Diagnose the implementation before blaming the interface standard. [cite:pAnLpiAG6Es:c01]
+
+## Choose components for the actual work
+
+Start with the simplest design that can meet the contract, evaluate it, and add agentic complexity where observed gaps justify it. A deterministic check can handle a directly observable condition while a model addresses context-dependent interpretation; simple rules are not universally sufficient. Focused, usable tools are themselves part of the capability being evaluated. [cite:T0HhO4YtTfE:c05] [cite:xyL2Ltkh-SA:c01]
+
+In **code mode**, the agent uses an execution environment to compose tool calls with loops, conditionals or parallel operations and return relevant results, rather than requiring a separate model interaction for every call. A small fixed toolset may work well with ordinary calls. Code mode introduces generated-code debugging, resource and sandbox management, and recovery if a program fails midway; fewer model turns do not establish simpler or safer operation. [cite:dAoOYFx7ZYw:c01] [cite:dAoOYFx7ZYw:c07] [cite:dAoOYFx7ZYw:c10] See [[security-and-agent-operations]] for operational readiness and [[tool-interfaces]] for tool-interface design.

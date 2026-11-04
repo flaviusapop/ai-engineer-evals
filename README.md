@@ -1,6 +1,6 @@
 # AI Engineer: six months of evals
 
-**[Browse the public library](https://flaviusapop.github.io/ai-engineer-evals/)** · **[Open the report](https://flaviusapop.github.io/ai-engineer-evals/report.html#collection)** · [Download everything](collection.zip)
+**[Browse the public library](https://flaviusapop.github.io/ai-engineer-evals/)** · **[Open the report](https://flaviusapop.github.io/ai-engineer-evals/report.html#collection)** · [Field guide](https://flaviusapop.github.io/ai-engineer-evals/wiki/) · [Download source collection](collection.zip)
 
 The report defaults to **newest first**; oldest-first and topic-grouping options work with search and filters. No login or Tailscale is required. See [sources, building and verification](ACCESS.md).
 

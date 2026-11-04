@@ -1,0 +1,41 @@
+A judge architecture should follow the property being checked, not the other way around. A parser, a model critic, an expert and a tool-equipped investigator can all contribute, but they answer different questions and introduce different errors. Keep their results separate long enough to understand what each actually establishes.
+
+## Separate production, review and review signals
+
+An agent’s statement that it completed a task is not a completion check. Give a reviewer a distinct fault-finding job and fresh context: the artifact and relevant original evidence, without the producer’s drafting history or conclusions when the aim is to avoid anchoring. A reported demand-letter review used opposing legal perspectives to find a renewal clause while a separate auditor checked arithmetic. These were agent personas, not demonstrated professional legal review. [cite:dYh7TQkuYFE:c05]
+
+A reviewer can be another model, but a different model or context does **not** make errors statistically independent: reviewers can share data, assumptions and blind spots. Nor does an objection automatically justify a change; [[give-judges-the-evidence-and-context-they-need|check criticisms against their sources]], and keep approval authority separate from review. A booking demonstration separates execution, validation and approval, but its selected cases do not establish that this eliminates correlated errors. [cite:vJukHCIv7Ck:c06]
+
+You can also keep review signals blind until synthesis. For example, one branch examines design quality while another collects mechanical defects; the synthesizer then considers both. Otherwise a large defect count can anchor the qualitative review, while an empty page can look excellent merely because it has no detectable polish violations. This architecture was described by its author; the intended subagent execution was not clearly shown live. [cite:SQMCtZX3trg:c02]
+
+## Match the grader to the property
+
+Use a repeatable code check when the requirement and reliable evidence can be expressed directly: JSON parsing, a required field, an unambiguous tool argument or an authorization limit. Use expert or model judgment for meaning that cannot be captured reliably that way. A tool-equipped judge can investigate an open-ended case, but extra model calls add cost and require their own validation. [cite:UGuNt2_Oz8s:c05]
+
+Deterministic does not mean comprehensive. In a workbook example, the same inputs are supplied to a reference and generated workbook and their outputs compared, testing behavior without demanding identical formulas. The example does not specify input coverage, tolerance or engine fidelity, so a pass cannot establish correctness for every spreadsheet. [cite:HEFSExa0xl0:c11] A contract team reported that its model judge introduced substantial noise, but did not quantify it; that experience supports using reliable code checks where available, not assuming all legal meaning is mechanical. [cite:c_SPW__jF9w:c09]
+
+Conversely, a keyword may measure the wrong property. In a constructed returns example, requiring “cannot” also passes an acceptance that says the customer cannot pay shipping. In a separate waitlist demonstration, persisted state does not make a message promising a confirmed seat true. Check persistence directly and assess whether the message matches the business outcome; neither demonstration establishes semantic-judge accuracy. [cite:NdrSPm6NCdk:c04] [cite:q4WC4TowkBo:c08] Likewise, OCR can help check required rendered text while aesthetic quality may still need human judgment; OCR can miss errors too. [cite:KLDdXOw6jIc:c11]
+
+Keep dimensions visible: a summary can have valid JSON, structurally valid references, faithful content, appropriate length and acceptable latency, each with a different failure mode. Combining methods does not validate their references or cover every possible error. For designing the criteria and testing judge alignment, see [[turn-task-quality-into-actionable-evaluation-rubrics]] and [[validate-judges-against-human-labels]]. [cite:fWXJM-J0ZB8:c03]
+
+## Separate outcome from trajectory
+
+A final result and the path to it are different evaluands. A correct-looking artifact obtained by escaping a sandbox to inspect hidden tests is not a valid success. Conversely, an agent that searches correctly but cannot buy an out-of-stock item may deserve process credit even though the purchase outcome remains unsuccessful. Checking the trajectory is a detection aid, not a replacement for isolation or authorization controls. [cite:2aS7aKoXn64:c05] [cite:xLxhT2ZI7UM:c05]
+
+Avoid making one arbitrary action sequence the definition of success when alternative paths are legitimate. Score essential constraints and relevant intermediate work separately. For instance, a task can penalize choosing the wrong person while still crediting a correct report about the person actually chosen; partial credit does not turn the overall answer into a success. Nor should an invented requirement be added merely because it sounds useful. [cite:2aS7aKoXn64:c06] [cite:xLxhT2ZI7UM:c04] [cite:xLxhT2ZI7UM:c03]
+
+This distinction also matters for training feedback: in a simplified outcome-reward illustration, giving every step the final outcome’s positive reward can reinforce a wrong intermediate step. Step-level supervision can distinguish it, but human labeling is costly and model-generated labels introduce verifier errors. This illustration is not a complete account of reinforcement learning. [cite:uIiA6DquRiE:c15]
+
+## Judge open-ended reasoning and adaptive paths
+
+When competent people can reach different conclusions, assess whether the necessary evidence and reasoning support the conclusion rather than forcing a single golden recommendation. An investment benchmark describes this approach for different defensible calls, but its results are preliminary and its rubric reliability was not measured. [cite:aVbRSIQO2dE:c12] A separate attribution workflow has analysts produce evidence-backed opinions and a synthesis judge weigh their reasoning; if agreement is insufficient, it may expand the jury. The source supplies no threshold, stopping rule or validation. Consensus is an input to a decision, not proof of a uniquely true causal allocation. [cite:YZQsWVeN3rE:c07] [cite:YZQsWVeN3rE:c09]
+
+Appropriate uncertainty can itself be a target: one team reports penalizing shaky assumptions and encouraging a clarifying question for ambiguous document fields. Asking also imposes user work; the source does not measure the costs of asking too often or too rarely. [cite:jJQoVkd5yLg:c06]
+
+For a highly variable execution, a tool-equipped judge can inspect the observed trajectory and choose further checks—for example, following a suspicious handoff to inspect its tool arguments. This is a per-case investigation, not cross-trace discovery, and its findings are hypotheses to verify. Proposed adaptive judges supplement rather than replace fixed checks and ordinary model judges; superior discovery of unknown failures has not been established in a controlled comparison. [cite:fnuNVFgLjHA:c07] [cite:q2JrUKBMf0w:c05]
+
+## Choose an ensemble rule for the decision
+
+Specify what a positive verdict means before combining votes. Requiring multiple reviewers to agree before **raising a finding** can suppress noisy alerts, but may also suppress real defects when any reviewer misses them. A speaker described such multipass review and cited separate research reporting improvement, without establishing the false-negative cost. [cite:_mi3alkqy4s:c05]
+
+For **accepting training examples**, requiring every judge to approve is restrictive in a different direction: it can reject useful data. In a vision-labeling demonstration, one small judge rejected heavily, so the presenter accepted an example if either judge approved, preserving more data at a possible quality cost. Validation was incomplete and the source’s recall remarks are ambiguous. [cite:dKcTBQzR7jI:c03] Neither rule is universally best: compare missed harms, false alerts and lost coverage for the actual decision, and remember shared errors can defeat a voting scheme. [[agreement-truth-and-the-limits-of-evaluator-proxies|Agreement is not truth]].

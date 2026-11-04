@@ -1,0 +1,49 @@
+A retrieval system decides which pieces of a corpus are available for a later task. A fluent answer can hide a retrieval failure, and finding the right document does not establish that an answer is supported by it. Evaluate evidence access on its own, then use [[evaluate-retrieval-and-grounded-answers|grounded-answer evaluation]] to examine support and abstention.
+
+## Define what retrieval must find
+
+For each realistic query, identify the relevant unit: a page, passage, file, document, or exact entity. The right choice depends on the task. A question about a policy may need a particular passage; an equipment inventory may need every matching asset, including names differing by one character. Treat the latter as an identity problem rather than assuming semantic similarity will distinguish near-collisions. Lexical search can help with identifiers and import chains, while semantic search can find related code described in different words. In one exploratory code-search comparison each approach helped on different tasks; neither was universally superior. [cite:EUsPvBeIx70:c01] [cite:zKk7sDMGDEQ:c04]
+
+Build judgments from real questions and have knowledgeable people label relevant results and plausible but misleading near-matches. One team reports assembling about 200 such examples in under a week, though it did not report a full labeling protocol or representativeness study. Pooling candidates from multiple systems before judgment can expose results that a single system would never return. In a separate pooled-ranking case, a grounded model judge reportedly agreed with human *system rankings* at 0.87; the agreement statistic was unspecified and does not mean 87% of individual labels were correct. [cite:CLve4Nx_RwI:c05] [cite:2LRIAfng7eA:c13]
+
+A complementary shortcut begins with a known page: generate a question about it, run retrieval, and check whether the originating page appears. This provides a code-checkable target without repeatedly asking experts to find an answer. It does not guarantee the question resembles a real user's request or that the originating page is the only valid evidence. Retain real-user cases alongside synthetic queries. [cite:c_SPW__jF9w:c01]
+
+### Choose denominators that match the decision
+
+* **Precision at K** is the number of relevant results among the first K divided by K. It reflects the irrelevant material in a fixed-size reading window. State what happens if fewer than K results are returned.
+* **Recall at K** is the number of relevant items found in the first K divided by the total number of relevant items in the judged corpus for that query. It asks what was missed; incomplete relevance judgments make this denominator uncertain.
+* A **hit rate** can ask whether at least one target was found. It is useful when one suitable source suffices, but does not show whether all relevant sources were found or how much irrelevant material accompanied them.
+
+**Illustrative calculation:** suppose a judged corpus has four relevant documents and the top five results contain three of them. Precision at five is 3/5, or 60%; recall at five is 3/4, or 75%. If the query needs all four documents, the missing item matters even though the result list contains useful evidence. If a user can read only five, the two irrelevant entries also matter. A code-search example returned 295 files when six were needed, illustrating the burden of excess material; its full relevance labels and a numerical F1 were not supplied. [cite:A3FL_zTQKU0:c06]
+
+Rank-sensitive measures can distinguish a relevant result at the top from one near the cutoff. Define the exact measure and relevance grades before comparison; one source's captioned metric names are too imprecise to reconstruct its formula. A tutor team compared retrieval configurations by whether the correct lesson page was found, rather than assuming its hybrid settings were optimal. The underlying tuning experiments and sample sizes were not shown. [cite:rTojoVotlD8:c12] [cite:WP3hjUXd918:c06]
+
+Keep reported results tied to their definitions. A rulebook project reported that hybrid search raised retrieval hit rate from 92% to 97% on 63 questions, with no previously found question lost; the hit definition and per-question results were not supplied. Another team initially defined precision at ten and reported about 60%, then described a later 90–95% result using an ambiguous “recall at 10 or precision at 10” label. Do not silently call that later number precision. Neither small, speaker-reported comparison proves that a search design generalizes. [cite:gonAewBZxfU:c06] [cite:CLve4Nx_RwI:c06]
+
+The precision–recall distinction is not limited to retrieval, but the population changes. For an incident detector, precision concerns flagged incidents and recall concerns all actual positive incidents—not retrieved documents. One synthetic detector account provisionally reports perfect precision and 0.8 recall; that would still miss positives. Its English interpretation is uncertain because the automatic captions render English speech in Devanagari and contain errors. It is not evidence of production incident coverage. [cite:LrGCT7G_rU8:c08]
+
+## Represent the material before indexing it
+
+A chunk is the unit search can return. Pick boundaries based on what makes sense to retrieve and what context the reader needs: functions, classes or methods for code; paragraphs and sections for prose; intact tables where a split would sever labels from values. Overlap can protect context at boundaries but duplicates content. A rulebook system instead used nonoverlapping chunks with document name, page, section path and chunk index, enabling a tool to fetch and reconstruct the surrounding section. Its heading rules were tailored to those rulebooks, not validated across all formats. [cite:dRmWYHuIJxM:c02] [cite:ksjwtQop4os:c02] [cite:gonAewBZxfU:c02] [cite:gonAewBZxfU:c03]
+
+Metadata should support actual downstream operations: locating a source, filtering by applicable role, or expanding a hit to its section. Code comments and generated document summaries may help convey meaning beyond the raw chunk, but comments can be stale and summaries inaccurate; the cited accounts did not isolate their benefits. Richer query-like code representations were suggested, not tested in the raw-code embedding experiment. [cite:zKk7sDMGDEQ:c07] [cite:zKk7sDMGDEQ:c08] [cite:gonAewBZxfU:c03]
+
+### Recover PDF and table structure
+
+Many PDFs describe positioned glyphs and graphic lines rather than explicit paragraphs and tables. Extraction must infer reading order and structure; recognizing the characters alone can put the right value under the wrong heading. PDFs vary, so inspect representative outputs rather than assuming every document has the same internal form. [cite:RQi7x-navxU:c03]
+
+For example, a table may visually show a transaction category spanning several fee rows. If extraction leaves the category only on the first row, a later retrieved fee loses its meaning. Expand the spanning label into each applicable structured row, retaining column headings and a route back to the source. A rulebook team used CSV for this; its fee example was a dummy illustration and the reported improvement was qualitative, not an isolated numeric test. [cite:gonAewBZxfU:c04]
+
+The best representation for search need not be the best one for reasoning. One practitioner describes indexing natural-language descriptions of tables to match questions, while passing structural HTML for reasoning about merged cells; simpler tables may fit Markdown. This is a reported practice without retrieval metrics, so test it against your own table types. [cite:0I07YAuF8xA:c04]
+
+## Ground search plans and test transfer
+
+Before a search agent plans a series of queries, show it an initial semantic search and the metadata facets actually available. The preview can reveal corpus vocabulary and usable filters, rather than letting the agent invent them. The cited account does not isolate how much this preview improves results. [cite:1IdzkRVmWAA:c05]
+
+Test the actual input regimes in which the system will operate. A code-search author reported that recall fell almost to zero on a 396-file mixed-responsibility repository after better results on more modular files; the account does not isolate repository size, organization or model capacity as the cause. A credit practitioner likewise distinguished standardized public information from challenging private-loan files, spreadsheets and PDFs, without a comparative extraction benchmark. A successful result on one corpus is a reason to test the next, not proof of transfer. [cite:dRmWYHuIJxM:c07] [cite:WOszaC1WWbQ:c05]
+
+## Build traceable references and keep them current
+
+A structured reference can make a corpus easier to navigate. One company organized product capability cards by what a product does and why it matters to defined personas, retaining citations back to connected sources. Another described research documents enriched with concepts, markets and time periods; an API context graph linked services and endpoints to code and production traces. These structures support inspection, but links alone do not prove the compiled claims, complete governance, or point-in-time correctness. [cite:YZQsWVeN3rE:c03] [cite:YZQsWVeN3rE:c04] [cite:CLve4Nx_RwI:c01] [cite:k2ClBT4aqAg:c02]
+
+Inventory each source's location, format, update pattern and task consequence, then choose a refresh cadence appropriate to that source. In a hypothetical claims workflow, a policy document and newly arriving claim decisions change on different schedules; example annual, quarterly and hourly intervals are assumptions, not prescribed rules. A perfectly retrieved stale document can still mislead. Preserve dates and source trails so a user can tell what information was available and when. [cite:T0HhO4YtTfE:c03]

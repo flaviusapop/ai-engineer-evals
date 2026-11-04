@@ -1,0 +1,25 @@
+An answer can sound credible, cite a document and still make a claim that the document does not support. A useful diagnosis separates three questions: did the system find appropriate evidence, did the answer stay within it, and did its tool and investigative behavior justify the conclusion? A fluent final response alone answers none of them.
+
+## Source boundaries, supported answers and selective abstention
+
+Start by specifying what counts as an approved source and which claims require one. A payment-rule assistant, for example, may use general knowledge to explain what a bank is, while the project’s intended boundary requires scheme-specific fees and rules to come from its own rulebooks. The intended answer gives a rulebook, section and page so a reader can inspect the basis. That reference is a pointer to evidence, not proof that the passage entails the claim. A real review must compare what the answer asserts with what the cited passage actually says, including conditions and exceptions. [cite:gonAewBZxfU:c01]
+
+A source can be missing for only part of a question. In one demonstration, the question covered honey bees and carpenter bees but the supplied material covered only carpenter bees. The desired behavior was to answer the supported portion and say the other was not supported by the available sources. A revised prompt marked the missing evidence yet still included extra honey-bee information: recognizing a missing citation was not the same as abstaining from the unsupported claim. [cite:UGjk3Uk0MxM:c02]
+
+This distinction matters when reviewing a response: a complete refusal throws away usable evidence, while a complete answer can quietly blend source-backed facts with model knowledge. Inspect each substantive part against its own supporting passage and note what remains unanswered. Whether the right source was retrieved is a separate question from whether the answer follows it; see [[evaluate-and-represent-retrieval-corpora]] for retrieval evaluation.
+
+Withholding can also be applied to individual values. One described financial platform removes numbers that cannot be independently checked against a canonical process, rather than treating agreement between probabilistic models as sufficient assurance. That policy trades coverage for protection against unchecked values. Its account gives neither a rejection rate nor coverage loss, an independent audit or a complete check specification; correctness also depends on the canonical inputs and implementation. It is an illustrative design, not proof that every remaining number is true. [cite:Tt2kX2sgQio:c05]
+
+## Diagnosing enterprise tool-use failures
+
+When an agent gives a bad database answer, examine the interaction rather than labeling the whole event a reasoning failure. A finance experiment described three distinguishable patterns: inventing tables or columns; issuing broad queries such as `SELECT *` that overwhelm the available context; and repeating a failed strategy instead of responding to an error. A query can execute successfully and still return too much to be useful. Conversely, a schema error may reveal that the agent never checked what was available. These observations motivate different investigations: schema discovery, query scope and adaptation to feedback, respectively. The account does not give failure frequencies or detailed evidence that the same rates hold across domains. [cite:TyPpSRXGhbc:c04]
+
+Experience can change what good tool behavior looks like. In a proposed sequence of questions over the same database, early exploration may establish table relationships and data formats; later work could reuse those discoveries rather than rediscovering them each time. Compare the exploration needed across comparable tasks, while checking whether reused knowledge remains applicable. The narrated later-instance improvement was illustrative, not a measured reduction in query count. [cite:iqloyWCGYQQ:c07]
+
+These are diagnostic lenses for interpreting behavior, not executable pass/fail tests. For the separate problem of designing reliable artifact checks, see [[tests-oracles-and-verifier-validity]].
+
+## Incident hypotheses need evidence chains and alternatives
+
+An incident explanation should connect a proposed cause to observations in sequence: which events were observed, how they relate to the suspected mechanism, and which link remains uncertain. A coherent story is not itself evidence that one event caused another. When the chain is incomplete, communicate the uncertainty and what needs investigation instead of announcing a root cause. [cite:eXA2tjRZIbY:c03]
+
+A vendor demonstration presented stale integrations as an explanation while also surfacing a concurrent cloud outage as an alternative. The useful practice is to make competing explanations and their supporting or conflicting evidence visible to an engineer, rather than hiding everything that does not fit the leading story. The demonstration did not independently verify its incident conclusion; even a displayed alternative is not necessarily ruled out merely because the system labels it so. [cite:eXA2tjRZIbY:c07]
