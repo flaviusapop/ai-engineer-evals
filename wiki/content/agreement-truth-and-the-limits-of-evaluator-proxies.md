@@ -1,0 +1,33 @@
+A score can be consistent, reproducible and still answer the wrong question. Before using an evaluator to choose or improve a system, distinguish three things: agreement with a reference, the validity of that reference or proxy, and the real outcome the decision depends on. They are related evidence, not interchangeable measurements.
+
+## Agreement is useful but not independent truth
+
+Agreement tells you that judgments coincide. It can help prioritize disagreements for inspection and measure alignment with a reference, but the parties may share assumptions or training influences. Different model providers, model families or reviewer roles do not by themselves establish statistical independence. In one finance case, four model families reportedly produced the same total while sharing a sign convention different from the answer key. That is one shared-error example, not an estimate of how often consensus fails. [cite:Fa3hQVIKShw:c10]
+
+In an exploratory credit exercise, two reported bankruptcy probabilities started at 62% and 25% and converged near 25% after structured reasoning, with both models favoring restructuring. The future was unresolved in the account. Convergence shows changed agreement under that process, not calibrated probabilities or predictive advantage; the prompts and repetitions were not specified. [cite:WOszaC1WWbQ:c07]
+
+Unexpectedly perfect agreement can prompt checks for leakage, repeated familiar cases or overfitting. One speaker proposed rejecting 100% agreement outright, but provided no held-out evidence that perfection necessarily means overfitting. Do not turn that concern into an automatic upper-bound rejection rule. When possible, examine fresh cases and independent evidence of correctness; use [[validate-judges-against-human-labels]] for the distinct problem of measuring agreement with human labels. [cite:NdrSPm6NCdk:c10]
+
+Adding another model reviewer does not make the chain infallible. Generated tests and reviews can themselves omit the relevant failure, and repeated evaluation of transcripts may reach the limit of what a platform knows about the customer’s intended outcome. The customer may have additional task-specific ground truth that the platform lacks. [cite:ugUeZ8-b-u0:c04] [cite:UGuNt2_Oz8s:c13]
+
+## Ask what the reference and proxy actually establish
+
+Start with the outcome, then state the narrower claim a measurement supports. A booking record can establish that a flight was booked; it cannot alone establish that it was the best option for a particular traveler. A self-evaluating teacher’s pass signal may simply reproduce its own interpretation of “best.” [cite:p7gaxmCUiIU:c06]
+
+Some outcomes cannot be observed on the development timescale. A speaker’s hypothetical smoking-cessation agent illustrates the gap: a long-term health outcome might take decades, whereas a forbidden-word check is immediately executable. The forbidden-word check may be a useful safety signal, but it does not measure the eventual health outcome, which is impractical to observe during development. Similarly, noting differences between a clinical encounter and a generated note is not the same as deciding which omission threatens safety; that requires domain judgment. [cite:A48uhxfxbsM:c11] [cite:yqF6XhzbWBk:c07]
+
+Intermediate criteria are also hypotheses about success. In exploratory scientific work, a team tested domain-informed checkpoints at common nodes in analysis paths. Their scores were reported to correlate only loosely with verifiable outcomes, and the speaker withheld confidence in using them for reinforcement learning or benchmarking. No coefficient or controlled optimization result was given. A plausible checkpoint should therefore be compared with outcomes before its score becomes an optimization target. [cite:3ZMUiFaQ3qg:c10]
+
+Where a task has stable, checkable evidence, source-anchored deterministic scoring can be preferable to asking a second model for an opinion. But a deterministic scorer can implement the wrong rule, and even a gold fact may be wrong or stale. Check the reference against its source and test scoring behavior separately from whether the criterion captures the outcome. A workshop described citation scoring and scorer unit tests; another system used separate conceptual and programmatic critics, yet later failures show that critic agreement was a safeguard attempt, not proof of correctness. [cite:KhRjivBSwiw:c11] [cite:kiqubc5b5Yo:c04]
+
+The evaluator itself needs scrutiny for reliability, scenario coverage and applicability to the deployed configuration. One vendor described tracing and an internal judge-based suite for its monitoring agent, without reporting judge validation or results. Instrumenting an evaluator is valuable visibility, not independent validation of its conclusions. [cite:mMw3arwQsL0:c07] [cite:F0TNSmbo5hE:c08]
+
+## Separate preference from realism and usefulness
+
+A preference score is meaningful when liking is the intended outcome. It is weaker evidence for realism, historical fidelity or usefulness. In an internal comparison described by a vendor panel, participants reportedly preferred generated videos over real counterparts, potentially because generated images looked more polished. No sample size or reproducible protocol was supplied; the example illustrates the distinction rather than a general preference rate. [cite:KLDdXOw6jIc:c07]
+
+A designer also qualitatively reported a visual judge favoring crowded first viewports. More content can satisfy an easy proxy while worsening the intended design; a functional check that required content is visible answers a different question from taste. This account does not establish that automated taste assessment is impossible. [cite:SQMCtZX3trg:c15]
+
+Likewise, a coverage rubric can reward several hedged alternatives when a workflow needs one usable recommendation. Evaluate whether the answer commits when the task warrants it, while preserving appropriate uncertainty and alternatives when the evidence really is uncertain. [cite:rWtbOgl5FTU:c07] A separate proposed historical-persona mechanism warns that raters may prefer familiar cultural portrayals over documentary accuracy; record-aware expertise can test a different objective, but no preference-training ablation was reported. [cite:IJXjTLPzvAU:c03]
+
+When building criteria for the actual task, see [[turn-task-quality-into-actionable-evaluation-rubrics]]; for supplying judges the necessary evidence, see [[give-judges-the-evidence-and-context-they-need]].

@@ -1,0 +1,31 @@
+An agent's supply chain includes more than the libraries in its final output. Shared instructions can steer what it writes or runs, integrations contain executable code, and dependencies can change after they are approved. Review each artifact according to what it can influence, where it comes from and how it reaches users.
+
+## Gate and screen reusable instructions
+
+A shared skill may look like configuration, but its instructions can influence code and tool actions across many users. Review it as an upstream dependency. Relevant risks include requests to hardcode credentials that later enter logs, destructive shell instructions, unintended file changes, excessive permissions and drift from intended behavior. These are illustrative risk categories, not evidence that every listed attack happened in production. Plugins, hooks, rules and tool servers have different execution and risk profiles, so do not assume identical review is sufficient for each. [cite:iKQ78wyJEXU:c01] [cite:iKQ78wyJEXU:c02]
+
+In a regulated financial organization's reported process, a new or changed skill enters an internal marketplace through a pull request and is scanned before distribution; policy and severity determine whether it is allowed, needs remediation or is blocked. Local scanning helps authors iterate, but the upload path scans again rather than assuming the local check ran on the current version. This creates a useful distinction between fast feedback and an authoritative distribution decision. [cite:iKQ78wyJEXU:c03] [cite:iKQ78wyJEXU:c04]
+
+The gate only covers artifacts routed through it. The speaker recommends bringing downloaded third-party artifacts through the marketplace and identifies alternate distribution paths as a continuing coverage problem. Another team describes scanning at release and again at use, assuming the first check can miss something. A proposed sharing loop also screens distilled skills for injection and personal information before publication. Neither a trusted marketplace nor a clean scan proves instructions safe or correct; scanner coverage, bypass residual risk and the sharing loop's detection accuracy were not established. [cite:iKQ78wyJEXU:c10] [cite:4lXks428C9o:c05] [cite:u-o0sW9nwmk:c07] For the attack mechanism itself, see [[prompt-injection-and-agent-threat-modeling]].
+
+## Recheck updates and dependency health
+
+Approval is version-specific evidence, not permanent trust. A speaker described an unnamed useful tool package with fifteen clean releases that allegedly added an attacker BCC on the sixteenth. Reinspect changed instructions and code, provenance and permissions when upgrading. The same source suggests delaying adoption by a week or two as a heuristic; waiting does not guarantee that malicious behavior will be discovered and may delay important fixes, so weigh the specific update. Scanning also has unknown false-negative rates. [cite:5O6jLtoeKrg:c11] [cite:ZyC56eV8sVw:c04]
+
+Known vulnerability status is only one input. In a recorded vendor demonstration comparing two QR-code packages, neither had an active CVE, but one was maintained and the other was not. The presenter preferred the maintained package because a future patch might arrive sooner. That is a reasonable maintenance consideration, not a measured guarantee of future patch speed or safety. Repeatable workflow checks can reduce reliance on a developer remembering to request a check each time, but the proposed skill or hook is not evidence that checks cannot be bypassed or that its scanner finds every issue. [cite:1EZdpEhwmNc:c06] [cite:1EZdpEhwmNc:c08]
+
+## Verify generated package names and provenance
+
+A model can invent a plausible package name. An attacker who observes that suggestion could register the previously nonexistent name, so a later successful registry lookup or installation would not prove that the original recommendation referred to a legitimate project. Before adding a generated dependency, establish that it is appropriate for the task and verify the intended project and publisher through trustworthy provenance, not just a matching name. This differs from a misspelling of an existing package, although both exploit name confusion. The sources describe the mechanism; the incident and rough download counts mentioned by one speaker cannot be verified from the supplied account, and no frequency estimate is established. [cite:p-2MT8KYZqU:c12] [cite:ZyC56eV8sVw:c13]
+
+## Review integration implementation as code
+
+A tool server can have unsafe instructions, ordinary code vulnerabilities, or both. Inspecting descriptions for instruction poisoning is not a substitute for reviewing implementation paths and dependencies for command injection, path traversal and similar defects. One externally reported Figma integration incident involved a fallback that concatenated a URL into a shell command, allowing crafted input to add a command. The account explains the failure but does not reproduce the exploit or establish that current versions are vulnerable. [cite:ZyC56eV8sVw:c10] [cite:p-2MT8KYZqU:c10]
+
+A proposed generated-code loop scans, repairs findings and scans the revised code again. The absence of scanner findings is a stopping condition for that check, not proof that all vulnerabilities have been removed; the source reports no measured success rate. [cite:ZyC56eV8sVw:c11]
+
+## Retain delivery controls and verify compliance separately
+
+Agent assistance does not justify bypassing tests, security checks, artifact registries or established deployment paths. Treat generated changes as changes that must traverse the applicable delivery process, with evidence tied to the artifact actually being released. [cite:1tpqdglI3T0:c01]
+
+A green build demonstrates only what its checks cover. It does not establish that a change meets business or regulatory obligations unless those obligations are explicitly checked and the relevant decision is traceable. A speaker described a feature-flag incident affecting driver checks and later controls for changes affecting London; that history is speaker-reported rather than independently documented in the supplied account. Use it to distinguish build success from policy evidence, not as proof that any particular control is universally sufficient. [cite:7b9tov5Uc5s:c08]

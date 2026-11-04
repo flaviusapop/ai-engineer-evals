@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>$page_title · $site_title</title>
+<meta name="description" content="$description">
+<link rel="stylesheet" href="${prefix}assets/wiki.css">
+<link rel="icon" href="${prefix}assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><a class="brand" href="${prefix}index.html">$site_title</a><a href="${prefix}index.html#search-control">Search</a></header>
+<div class="layout">
+<aside class="sidebar"><details class="section-nav" open><summary>Browse field guide</summary><nav aria-label="Section navigation">$navigation</nav></details></aside>
+<main id="main" tabindex="-1">$breadcrumbs<div class="page-heading"><p class="eyebrow">$eyebrow</p><h1>$heading</h1><p class="lede">$description</p></div>$body</main>
+</div>
+<footer><a href="${prefix}sources.html">Sources</a> · <a href="${prefix}methodology.html">Methodology</a> · <a href="${prefix}llms-full.md">Full Markdown</a> · <a href="${prefix}../llms.txt">LLM index</a></footer>
+<script src="${prefix}assets/wiki.js"></script>
+$scripts
+</body>
+</html>

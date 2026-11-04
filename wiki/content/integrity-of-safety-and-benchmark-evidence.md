@@ -1,0 +1,35 @@
+A safety score is evidence about a particular system, test and outcome—not a certificate that every hidden failure has been ruled out. Protecting that evidence requires different responses to different problems: benchmark leakage can inflate apparent capability; a hidden trigger can change a model's behavior; an unsupported output can make a claim the evidence does not justify. None is interchangeable with the others.
+
+## Investigate possible benchmark leakage
+
+A benchmark can lose its value as an independent test if organizations or models have been exposed to its items. One proposed diagnostic keeps a representative anchor set common across organizations and gives each organization a different set of hard fingerprint items. Later, compare performance on those organization-specific items relative to the shared anchor. Unusually strong residual performance on one organization's exposed items is a reason to investigate possible leakage or training contamination, not proof of either. Differences in ability or item difficulty could also matter. The illustrated analysis used synthetic data, and its proposer explicitly cautioned that the method is not bulletproof. [cite:O3FEoMYvUf8:c06]
+
+## Threat-model conditional behavior separately
+
+A backdoored model may appear normal on ordinary inputs yet switch behavior when a trigger occurs. Possible entry paths include poisoned training data, compromised fine-tuning services or checkpoints, and insiders with pipeline access. These are threat-model possibilities, not evidence that a particular provider or model is compromised. Behavioral tests remain useful, but a passing suite establishes behavior only under the conditions it exercised; an untested trigger can remain invisible. [cite:IQkVMvXQKLY:c01] [cite:IQkVMvXQKLY:c02]
+
+In one synthetic experiment the trigger was a year in a coding context: the fine-tune was designed to generate vulnerable SQL for one year and safer parameterized SQL for another. Before interpreting a detector, the speaker compared behavior across checkpoints. The reported full-rank model produced vulnerable code in 100% of trigger cases versus 0% for the benign year; LoRA was 100% versus 40%; the base model was about 53% for either year. A high baseline vulnerability and a trigger-specific change are different findings. These are speaker-reported results for one constructed task, not real-world prevalence estimates. [cite:IQkVMvXQKLY:c05]
+
+## Use activation differences as an investigative signal
+
+Where comparable base and fine-tuned checkpoints and their activations are available, run the same inputs through both, subtract base activations from fine-tuned activations at a selected layer, and train sparse features on the differences. The rationale is to focus detector capacity on what fine-tuning changed rather than on semantics shared by both models. After establishing the behavioral switch, inspect features that activate on probes to investigate what changed. This method cannot be applied as described if the reference checkpoint is unavailable. [cite:IQkVMvXQKLY:c03] [cite:IQkVMvXQKLY:c09] [cite:IQkVMvXQKLY:c10]
+
+The reported isolation score combines precision and recall with a false-alarm penalty, although the full penalty formula and selection/evaluation split were not provided. On one model and layer, a selected delta feature scored about 0.4 against roughly 0.01 for a joint-feature crosscoder; it had no observed false positives and precision of one on the evaluated data, but detected only about a quarter of triggers. The score comparison, precision, and recall answer different questions: a quiet alert is not a high-coverage screen. Common thresholds and bootstrap intervals do not settle possible best-feature selection bias. [cite:IQkVMvXQKLY:c06] [cite:IQkVMvXQKLY:c07]
+
+Treat a firing feature as a reason for inspection, not an automatic explanation; do not treat silence as clearance. This experiment used one synthetic backdoor on a 360-million-parameter model, with no adaptive attacker. Ensembles and build-time gating were proposed, not validated as complete defenses, and local thresholds and unseen-trigger coverage remain open questions. [cite:IQkVMvXQKLY:c09] [cite:IQkVMvXQKLY:c10]
+
+## Bound numerical claims to supported evidence
+
+An output control can enforce a narrower claim than “the model is truthful.” One reported financial-research platform matches generated numbers to an approved fact registry and strips unmatched values before display. Another describes independently checking numbers against a canonical process and restricting which classes of data the system may produce. These controls operate at the platform boundary: the underlying model can still hallucinate, and an unsupported source class does not inherit the supported path's assurance. Correctness depends on extraction, registry, checks and filtering, as well as the underlying source. [cite:dZgA6btnb_s:c05] [cite:Tt2kX2sgQio:c05] [cite:Tt2kX2sgQio:c08]
+
+Withholding an unmatched number sacrifices answer coverage. Selective citation repair may recover some useful claims, but one reported implementation does not disclose how repair success is verified or its accuracy. A traceable research output is not proof that the underlying filing is true or that an investment decision will succeed. The vendor accounts do not supply independent audits or a measured rejection-coverage tradeoff. [cite:dZgA6btnb_s:c06] [cite:dZgA6btnb_s:c11]
+
+## Permit uncertainty and retain a final gate
+
+A visual evaluator should be able to say that the evidence is insufficient, rather than inventing a confident pass. In a speaker-described food-image case, neither the original nor the edited image established an advertised count of eight wontons, so the enhancement was rejected. Bounded retries can end in withholding an enhancement rather than publication; this protects the evidence boundary at the cost of coverage. The image and a measured rejection rate were not available in the source. [cite:31GUkCBD-Uc:c08] [cite:31GUkCBD-Uc:c12]
+
+A separate publish-ready policy and quality check may catch an error missed by local editing checks. Redundancy is a design choice, not proof that layers fail independently or that all escapes have been eliminated; the reported workflow does not quantify an escape reduction. [cite:31GUkCBD-Uc:c13]
+
+## Disclose enough to scrutinize, without releasing exploits
+
+Reproducibility also has a security boundary. Cybersecurity evaluation environments and trajectories can help others inspect a result, but a trajectory may contain a novel weaponized exploit. In one reported benchmark, the authors released environments and most data while withholding one model's trajectories both because of an NDA and because they contained nonpublic weaponized exploits. Neither unrestricted publication nor blanket secrecy follows automatically; decide what can be shared under the applicable risk and contractual constraints, and state what was withheld and why. The speaker did not provide a general solution. [cite:ZFxh7sqbUZo:c09]

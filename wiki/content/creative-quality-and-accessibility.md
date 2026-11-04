@@ -1,0 +1,35 @@
+Creative quality depends on what an artifact is for and whom it serves. A design can satisfy a brand brief but be inaccessible; a factual explanation can be too full of internal jargon for its audience. Evaluate those dimensions separately instead of letting visual polish or one overall preference score stand in for the whole experience.
+
+## Design-system retrieval as proposed product context
+
+When a user has no established brand, one proposed workflow retrieves a pre-designed, coherent system matching the requested mood and context, rather than inventing typography, color and layout choices independently. The proposal is intended to give the generator a consistent starting point, not to establish that retrieval produces better or more accessible designs. Evaluate whether the selected system actually suits the user and task, whether its components work together, and whether users can use the result. The cited workflow is a product proposal, not a measured experiment. [cite:sDMGWK4wZ_w:c08]
+
+## Define quality for the intended audience
+
+Specify the audience, role, purpose and context before asking reviewers to judge quality. A slide appropriate for a startup may be inappropriate for a finance firm; a meeting summary that highlights deal context for sales may fail an engineer who needs blockers and actions. These are motivating examples, not measured persona-specific results. Standards and user needs can also change over time. [cite:lCBf9slCanI:c02] [cite:ON5LIT0M4do:c02]
+
+The distinction applies to instruction as well as aesthetics. A chess engine's best move and how likely players at a specified rating are to find it are different questions. The described coach uses a rating-conditioned human-move model to predict a distribution over moves. A rating-group prediction is not a calibrated probability for a particular learner, and the source does not establish that the model's estimates are calibrated or that coaching improves learning. [cite:FlzpEGHNVKQ:c03]
+
+A writing benchmark aimed at one author's voice and ten tasks can help that author compare candidates; it is not a universal ranking of creative writers. Its speaker recommends local evaluation and final human review. Claims about reduced editing burden are practical guidance, not timed evidence of savings. [cite:_dTF3NpPzGo:c02] [cite:_dTF3NpPzGo:c10] [cite:_dTF3NpPzGo:c14]
+
+## Separate constraints, craft and preference
+
+Break a broad assessment into dimensions that can be examined independently. For writing, voice, storytelling, instruction compliance, research accuracy and generic or repetitive language are different properties: a script may sound right while misstating a fact. A reported writing benchmark groups its detailed metrics this way, but its full prompts, weights and metric definitions were not supplied. Likewise, a changelog can be factually accurate and still use internal jargon that customers do not understand. [cite:_dTF3NpPzGo:c04] [cite:TeErpYBUIeM:c08]
+
+For design, alignment or contrast can be more assessable once context is specified, while aesthetic preference can yield legitimate expert disagreement. Record whose preference and use case are being judged rather than calling every disagreement an error. Accessibility requirements, however, are not simply a matter of whether reviewers like the look. [cite:sDMGWK4wZ_w:c01]
+
+A proposed brand check decomposes an existing system into colors, typography, motion, texture and other components. A novel page can then satisfy those constraints without copying a single reference layout. This leaves space for meaningful novelty; unusual is not automatically good, and most common is not automatically best. These are design proposals and opinions, not controlled evidence that component scoring improves training or beats exemplar comparison. If a generator extracts its own brand specification, independently review the specification too: using the same mistaken assumptions for generation and evaluation can make a flawed result appear consistent. [cite:lCBf9slCanI:c03] [cite:lCBf9slCanI:c04] [cite:lCBf9slCanI:c06] [cite:sDMGWK4wZ_w:c07]
+
+Repetition is also not a complete quality metric. Narrow probes for color, typography and layout can identify recurring patterns, but their usefulness depends on the examples and labels sampled. One team reported historical website homogenization before generative AI as well as repetition in generated sites; sampling and comparison controls were not provided. Compare against a relevant historical baseline and ask whether similarity reflects a useful convention or a failure to respond to different contexts. [cite:sDMGWK4wZ_w:c02] [cite:sDMGWK4wZ_w:c03] [cite:sDMGWK4wZ_w:c04]
+
+## Give implementation both structure and visual context
+
+A screenshot communicates appearance; a structured, code-like representation of the design scene graph can convey elements and their relationships to an implementing agent. The Figma team reported better results using image and code context together than an image alone. This is an internal practical observation, not a universal ranking of representations. Check the implementation's theme and variable use, visual appearance and decisions under ambiguity, not just pixel similarity. [cite:ZIYYsAzaLlA:c01] [cite:ZIYYsAzaLlA:c02] [cite:ZIYYsAzaLlA:c04]
+
+## Build accessibility into the lifecycle
+
+Set platform-specific accessibility requirements during planning and design, before implementation and QA. Audit inherited patterns and fix identified accessibility problems before generating new features: an agent can copy existing inaccessible conventions just as readily as useful ones. The propagation mechanism is qualitative, not a measured rate. Do not infer that there is no accessibility need from the absence of users who could not enter or use the product in the first place; that is a selection problem, not an estimate of demand. [cite:ZccJsdOE54M:c02] [cite:ZccJsdOE54M:c04] [cite:ZccJsdOE54M:c05] [cite:ZccJsdOE54M:c06]
+
+Where appropriate, map a design element to the actual existing accessible and internationalized component, rather than rebuilding a lookalike. The reported design-to-code example maps a button to a codebase component; reuse is useful only to the extent that the actual component and its use meet the requirements. A visually identical replacement may omit behavior. [cite:ZIYYsAzaLlA:c06]
+
+For web interfaces, a cited minimum is semantic HTML where it expresses the behavior, keyboard access to mouse-operated interactions, understandable labels for screen-reader users, and an explicit audit. Use native semantics before adding ARIA where appropriate. Automated checks and lightweight generation guidance are starting points, not a complete accessibility certification. Manually test the actual interactions and assistive-technology experience, and apply requirements appropriate to the platform. The source explicitly says the minimum checklist and any single tool are insufficient. [cite:ZccJsdOE54M:c09] [cite:ZccJsdOE54M:c10]

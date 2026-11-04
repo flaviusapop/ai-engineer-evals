@@ -1,0 +1,29 @@
+A test can look independent while giving the system information it would not have in the intended use. The leak may come from related training examples, previously exposed benchmark answers, or evidence published after a historical decision. These are different problems: hiding benchmark answers does not make a historical web search time-correct, and an archive does not erase answers learned during training.
+
+## Constrain historical discovery as well as page versions
+
+For a retrospective forecast, fix a decision date before the outcome and reconstruct what the system could have known then. If an acquisition is announced later, a current search can return the announcement and turn a forecast into an answer lookup. Restrict the web tool to evidence available by the decision date, and record the cutoff, retrieved versions and their provenance. A displayed publication date alone is insufficient: a page can have been edited since that date. [cite:L4dUFimVDKU:c03] [cite:L4dUFimVDKU:c04]
+
+There are two distinct retrieval problems. An archive lookup for a **known URL** returns an available version at or before the cutoff. Historical **search** attempts to discover relevant pages from a time-bounded index. If the evaluator picks the URL because of what happened later, the page content may be old but the selection still imports hindsight. Vendor-described historical search addresses this discovery channel, but the supplied evidence does not establish archive completeness, timestamp guarantees or exact reproduction of historical ranking. Missing pages can bias the test too. [cite:vS2IA9pq0Q4:c03]
+
+Inventory every other channel: model weights, internal databases, feeds, tools and any human-selected context may contain later information. A historical web interface controls only its own channel, not future knowledge already embedded elsewhere. Disclose what could and could not be bounded; do not call the entire replay leakage-free merely because the web tool is dated. A live, unresolved case avoids a known outcome at decision time but cannot immediately establish forecast accuracy. Historical replay supplies outcomes sooner, at the cost of a harder information-boundary problem. [cite:vS2IA9pq0Q4:c08] [cite:WOszaC1WWbQ:c08]
+
+## Split by the generalization claim
+
+Choose the split unit to match what the deployment claim says must be new. If the goal is performance on unseen companies, keeping questions about a company in both training and evaluation can reward familiarity with that company's facts or templates. Put companies, not just individual rows, into disjoint partitions. In the reported FinQA example, the company-disjoint split had roughly 4,000 training examples, 500 validation examples and 290 held-out benchmark examples. That boundary is useful, but the source does not establish that other leakage paths were audited. [cite:TyPpSRXGhbc:c03]
+
+Grouping is not enough if important categories disappear from the exposed or evaluation partitions. In an audience-reported prompt-optimization run, a high-scoring prompt excluded aunt and uncle relationships despite their presence in the reference. The speaker suspected those categories were absent from the optimizer's subset; that diagnosis was not established. Inspect category coverage and report results for consequential rare distinctions instead of letting common cases conceal them. [cite:A48uhxfxbsM:c06]
+
+## Reduce benchmark answer exposure
+
+A model can encounter public benchmark questions or solutions in pretraining, while a team can also tune repeatedly against visible test feedback. Reserve a private set for a final check, restrict who and what can see its answers, and disclose exposure risks. Fresh tasks and novel problems reduce reliance on published solutions; one coding benchmark collects recent issues on a rolling basis, while another proposal combines novel tasks with private holdouts. Neither novelty nor secrecy proves decontamination, and a fresh task may still have an answer reachable at runtime. Compare the controls to the specific exposure route rather than assuming one technique handles all of them. [cite:jWq-aZIU0kM:c10] [cite:wcUJWP6WpGM:c01]
+
+Where feasible, investigate overlap or verbatim memorization and report the method and uncertainty; a speaker-reported investigation in the evidence provides neither methods nor statistical results, so it cannot supply a contamination rate. Public tasks help others inspect and reproduce work, whereas private tasks reduce answer exposure: use each for its purpose and disclose the tradeoff. Repeated visible feedback can itself encourage adaptation; preserve an independent final check rather than treating a frequently consulted regression set as untouched evidence. For runtime answer access and benchmark attack surfaces, see [[protect-benchmark-integrity]]. [cite:-npY6XjM8CQ:c03]
+
+## Separate site adaptation from unseen-site transfer
+
+Real deployment data can reveal conditions missing from laboratory examples and help adapt a system to a particular site. But if that site supplied training data, success there estimates performance after local adaptation, not zero-shot performance at a new location. Report which sites contributed data, and evaluate the unseen-site claim on sites not used for that adaptation. These are complementary questions, not competing definitions of success.
+
+A robotics vendor describes collecting customer-site data and later demonstrates operation at a conference without additional site data. The account is not an isolated test of data collection, and the conference demonstration gives no quantified cross-site success rate. It motivates recording the distinction, not a claim that transfer has been established. [cite:Sjfz1TqxzEs:c01] [cite:Sjfz1TqxzEs:c06]
+
+For controlled comparisons beyond these information boundaries, see [[comparing-agents-without-confounding-the-result]].

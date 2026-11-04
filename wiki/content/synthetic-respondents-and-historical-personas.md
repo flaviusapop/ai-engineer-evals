@@ -1,0 +1,33 @@
+A synthetic respondent is a model-generated forecast of an answer, not an additional human observation. A historically styled persona is a reconstruction from evidence, not the person speaking. Both can help explore questions, but they require different validation: population response patterns for the former, and time-specific documentary fidelity for the latter.
+
+## Define the population and the claim
+
+Use synthetic respondents to explore follow-up questions within a regime checked against relevant human data, not to inflate a survey's sample size. A plausible explanation or blind realism review is not proof that the model captures the target population, rare cases or downstream outcomes. In one speaker-reported clinical realism review, clinicians distinguished synthetic from real records about 60% of the time; the sample and protocol were not supplied, and this is not a clinical outcome measure. [cite:YnNF55QV0zs:c01] [cite:XAsb7MIAzm8:c12]
+
+Specify whether the target is stated attitude, actual behavior or a decision mediated by an agent. Exercise attitudes may be easier to elicit as text than future gym attendance, but their usefulness as a behavioral proxy must itself be tested; the example is hypothetical. If a purchasing agent actually filters options for a person, evaluating only unaided human choices may miss part of the decision pathway. This is a forward-looking design consideration, not proof that human studies are obsolete. [cite:YnNF55QV0zs:c04] [cite:YnNF55QV0zs:c13]
+
+Political simulations illustrate the same limit. A model estimating legislators' votes or scoring bills against synthetic constituents produces model outputs, not verified vote forecasts or public opinion. A described dataset's assumed representativeness was not checked against actual constituent opinions. [cite:hOWU0KPUp1k:c07] [cite:hOWU0KPUp1k:c08]
+
+Keep denominators explicit even for real surveys used as a reference: a reported intention to adopt among people **not currently building** with a modality is neither current use among all respondents nor a prediction that all intenders will adopt. [cite:RGe6EjucbzI:c02]
+
+## Hold the world fixed; test the persona
+
+In an *illustrative* price experiment, specify the product, expiry, competitor offerings and other fixed conditions, then vary price. Otherwise the model may infer that a price change also changed quality or the market, confounding the intended treatment. A secondhand account described synthetic purchase responses forming an inverted U while human responses declined; invented correlations were offered as an explanation. Full prompts and controls were not available, so treat it as a diagnostic illustration rather than a reproducible effect. [cite:YnNF55QV0zs:c02]
+
+Enough context to define the experiment is not the same as more persona detail. Additional demographic or ideological detail can amplify model biases; a reported voting example became less aligned with humans as descriptions grew richer. Compare prompt variants against held-out human results rather than selecting the most vivid profile. Reorder answer options, reword questions and challenge stated opinions: a strong option-order effect can look like a stable preference until the order changes. [cite:YnNF55QV0zs:c03] [cite:YnNF55QV0zs:c05]
+
+Use an existing human study as a starting point for exploratory follow-ups when a new study is unavailable, but label the result as extrapolation and validate important predictions with people. A claim that expert-plus-persona extrapolation beats expert judgment alone was not backed by a comparative experiment in the cited account. [cite:YnNF55QV0zs:c12]
+
+## Compare distributions against human variability
+
+A correct average can hide a wrong distribution: an *illustrative* model whose respondents all give the middle rating could match the mean of a human group split between extremes while missing polarization entirely. Compare response shares and distribution shape as well as correlation or mean. One proposed method elicits free-text reactions and compares them with human-written anchors for each rating, yielding a distribution rather than one forced score. Its embedding, normalization and calibration details were not disclosed, so the estimator cannot be reproduced from the account alone. [cite:YnNF55QV0zs:c07] [cite:YnNF55QV0zs:c08]
+
+Interpret agreement relative to the variability of the human reference. Repeated answers from the same people estimate within-person temporal consistency; a secondhand study reported about 80% consistency after two weeks and about 83% agent alignment **normalized** against human inconsistency, not 83% raw accuracy. When retests are unavailable, repeatedly splitting the human sample and comparing halves gives a reference for sample variation, not a measurement of within-person repeatability. More synthetic samples may characterize the model precisely without adding independent human validation. [cite:YnNF55QV0zs:c10] [cite:YnNF55QV0zs:c11]
+
+## Anchor historical reconstruction to documents and time
+
+A fluent voice can use premises or later knowledge the historical person could not have held at the chosen moment. Specify the individual and encounter date, assemble inspectable documentary evidence and ask experts whether each argument is licensed by that record. A general training cutoff alone does not select one person's position at one moment: it can still mix earlier periods and different observers. Documentary support is not direct access to private beliefs, and surviving sources may be incomplete or biased. [cite:IJXjTLPzvAU:c01] [cite:IJXjTLPzvAU:c04] [cite:IJXjTLPzvAU:c05]
+
+For example, a speaker contrasts an unanchored Lincoln answer on executive war powers with an 1848 letter; the contrast illustrates a possible temporal reasoning failure, not a systematic benchmark or proof that anchoring fixes it. Keeping documents in context gives reviewers a route back to specific evidence; fine-tuning may produce a convincing voice while making the connection to an individual document harder to inspect. That architectural preference is an argument, not a controlled comparison. [cite:IJXjTLPzvAU:c01] [cite:IJXjTLPzvAU:c07]
+
+A proposed, preregistered study crosses four moments with three conditions—primary writings, modern biography and a date-only model—and asks five expert-designed diagnostic questions in each cell. It is designed to distinguish moment-specific reasoning from a smooth later narrative, but had not been run at scale in the account; superiority of primary-document anchoring remained a prediction. [cite:IJXjTLPzvAU:c09]

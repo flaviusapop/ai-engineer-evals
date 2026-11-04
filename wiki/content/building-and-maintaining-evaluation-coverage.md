@@ -1,0 +1,29 @@
+Evaluation coverage should evolve with both the system and the evidence available about its use. Early exploration can compare candidates on repeatable tasks; deployment adds observations of real workflows and exposes behaviors that the initial test design missed. Neither a single score nor a static suite establishes that the entire product will work reliably.
+
+## Combine controlled tests with actual use
+
+Use benchmarks for repeatable comparisons, then add realistic scenarios that exercise the agent in an environment: a support task, for example, can require the agent to use tools and complete a workflow, not merely produce a plausible answer. The scenario can examine completion, tool use, planning and resource use. Production observations add another perspective: traces, outcomes, escalations and feedback show what occurred in the deployed system. A benchmark can measure capability without covering API outages, changing context or long workflows. [cite:vljxQZfJ9wY:c01] [cite:vljxQZfJ9wY:c06] [cite:vljxQZfJ9wY:c07]
+
+These settings complement rather than replace each other. A controlled comparison is easier to repeat; direct use can reveal conditions not anticipated in the test. One proposed evaluation pyramid puts production signals above scenarios and benchmarks in operational value, but that ordering is a speaker's framework, not a measured ranking. Production traffic is not automatically representative of every user or failure: sampling, missing outcomes and privacy need attention. Similarly, benchmark scores and user experience are both imperfect evidence; there is no validated universal formula for weighting them. [cite:vljxQZfJ9wY:c05] [cite:QuuIywMG4s8:c01]
+
+## Add pre-release evidence without removing runtime defenses
+
+A pre-release scenario asks whether a candidate behaved acceptably in a known case. A runtime harness constrains or handles actions as they occur, including cases the suite did not anticipate. The two operate at different times: a passing offline test does not make a runtime control redundant, and a runtime control does not show that the agent can complete intended tasks. Neither guarantees prevention of every exploit. The source motivates this division with anecdotes rather than a controlled safety comparison. [cite:NdrSPm6NCdk:c01] For the enforcement mechanisms themselves, see [[agent-authority-isolation-and-runtime-controls]].
+
+## Assign evaluation responsibility for customizations
+
+A provider may evaluate a general agent harness, while a customer adds instructions or a skill that changes what the agent does. Write down which behaviors the provider's evidence actually covers and who will test the combined system in the customer's context. Define the intended behavior before implementing the customization, then test representative scenarios against it. For instance, if a skill should direct the agent to a particular documentation workflow, check that behavior rather than relying on the skill's text looking correct. [cite:GmAQKINjv1E:c03]
+
+One speaker argued that personal coding-agent skills do not need their own evaluation because the provider owns the harness and the skill is deterministically authored. That is a position based on assumed provider coverage, not a demonstration that instructions cannot introduce failures or that agent outputs become deterministic. In the other skill demonstration, a grader checked the wrong representation and the comparison did not establish an improvement; it supports the proposed evaluation practice, not a proven effect. [cite:NdrSPm6NCdk:c18] [cite:GmAQKINjv1E:c03]
+
+## Reuse environments, not necessarily cases
+
+An executable environment can package a task, the harness that runs an agent, its rollout and a way to verify the outcome. Build that machinery to compare candidates now, and it may later support demonstration collection, prompt optimization or training. This reduces duplicated infrastructure without requiring an early commitment to post-training. [cite:V-EDrhIhHzQ:c02] [cite:AQv3qRCG6Gw:c01]
+
+Keep the infrastructure decision separate from data and reward decisions: reusing an environment does not justify evaluating on the same cases used for training, and an executable reward is not automatically a valid measure of success. The proposed production-to-training loop also depends on obtaining useful real-world feedback and translating it into tasks and rewards; the speaker identifies that translation as an unresolved engineering and research problem. The underlying workshop was a vendor-led architectural proposal, not an end-to-end controlled benchmark. [cite:V-EDrhIhHzQ:c04]
+
+## Change coverage when the architecture changes
+
+Preserve the durable description of desired behavior and the old tests that remain relevant, but map each new component and interaction to its own coverage needs. A product that adds cross-session memory, generated-code execution or a skill directory can fail in places a final-answer test of the old loop never exercises. For example, when adding memory, ask whether retrieval affects the intended workflow; when adding execution, consider outcomes and failures of that new surface. These are coverage prompts, not a claimed validated memory or sandbox test protocol. [cite:nxokqOq1imY:c01] [cite:nxokqOq1imY:c09]
+
+Also look for failure categories the team did not already name. The source describes clustering production data as a way to surface candidates for new datasets and guardrails, not as proof that every cluster is a genuine failure or that discovery is complete. Review leads before deciding what to add; the cited vendor description gives no discovery-quality measurements. For the subsequent handling of production-derived cases, see [[build-and-maintain-production-grounded-evaluation-sets]]. [cite:nxokqOq1imY:c10]

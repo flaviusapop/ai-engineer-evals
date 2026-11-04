@@ -1,0 +1,41 @@
+An agent score is a result for a particular configuration, not a property of a model name alone. The model interacts with its harness, tools, endpoint, environment, resource budget and task distribution. Before comparing two scores, decide what difference you actually want to estimate: a model swap under a shared scaffold, a component change, or a choice between complete systems you could deploy. Those are different questions, and a good answer to one is not automatically an answer to another. [cite:YIxzNZDDy1A:c01] [cite:kRJjSOYqW0I:c06]
+
+## Choose the configuration and estimand
+
+To compare models under a **fixed scaffold**, use the same harness, tool loop, task inputs, environment, verifier and budgets, changing the model. The result estimates the difference between those models *under that scaffold and protocol*. It does not establish which model would win with its own optimized harness. A common minimal scaffold can reduce engineering variation, but a named agent using its native harness is a different treatment and should be reported separately. [cite:wcUJWP6WpGM:c06] [cite:Yk87oUPVaxU:c07]
+
+To choose what to deploy, compare the **maintained stacks** as they would actually be operated, including their model-specific prompts and features, tools and costs. That comparison can answer which complete option performs better for your workload, but a difference cannot be attributed to the model alone if the harness also differs. When attribution matters, run multiple model–harness combinations or a targeted ablation as well as the deployment comparison. A speaker recounts a third-party coding comparison in which changing harness reversed two models' relative order; the underlying study and controls were not detailed, so it is a reason to test interactions, not proof of a universal reversal. [cite:A3FL_zTQKU0:c02]
+
+For example, a voice stack can propagate an upstream recognition error: if “third” becomes “thirtieth,” a language model can faithfully act on the wrong payment date. This is an illustrative scenario, not a measured incident. Testing the full conversation and backend outcome answers a deployment question that separate component scores cannot settle. Likewise, don't combine an unreleased research prototype's retrieval score with a production beta's score on a different benchmark as though they measure one intervention. [cite:OmyqelTwpOo:c01] [cite:1IdzkRVmWAA:c11]
+
+## Isolate and enforce the intended change
+
+For a tool or feature comparison, keep the agent and model, task set, inputs, starting data, scoring method, resource limits and other relevant access the same; change the candidate component. Compare each task across arms, repeat runs to expose variation, and inspect both outcomes and traces. For example, compare a connector with and without a candidate search tool while holding the rest of the agent fixed. Fixing inputs improves interpretability, but does not eliminate randomness or live-service changes. [cite:pAnLpiAG6Es:c08] [cite:j4AmIK6OvHc:c12]
+
+The treatment must actually be enforced. In one search comparison the shared harness could otherwise navigate using the strategy excluded from the vector-search arm; the team added tool restrictions rather than relying only on an instruction. Its complete deny list was not supplied, so parity cannot be fully audited. Check traces for actual tool use and whether the intervention was activated. [cite:T3SS931wU0I:c07]
+
+Make the baseline credible, too. A retrieval experiment compared an unmodified agent, a limited-read agent, and limited reads plus semantic search: comparing only the first and third mixes read-window policy with search. Use the middle arm to make the search contribution more interpretable. Similarly, disclose and appropriately configure a lexical baseline rather than comparing an elaborate retriever against an unsuitable default. A state-reset skill demonstration also illustrates why a valid grader matters: its incorrect grader confounded the comparison and did not establish improvement. See [[tests-oracles-and-verifier-validity]] for verifier validity rather than assuming a fixed grader is correct. [cite:zKk7sDMGDEQ:c02] [cite:fZH97QHHYjY:c05] [cite:GmAQKINjv1E:c10]
+
+## Backtest agent-derived features separately
+
+An agent may search unstructured material and extract a structured signal for an ordinary predictive model. To test whether the signal adds value, compare the existing model with a version adding one agent-derived feature, using historical decision dates and subsequently observed outcomes; repeat for other features before combining them. Vary search behavior as a separate condition, rather than crediting a bundle of changes to one signal. This is speaker-proposed practice, not validated investment performance. Historical snapshots constrain the search channel but do not remove future information already in model weights or other inputs. Protect both time boundaries and the final holdout: [[protect-holdouts-and-historical-evidence]]. [cite:L4dUFimVDKU:c05]
+
+## Pin and verify the effective configuration
+
+Record the dataset and task version, harness and tool versions, model endpoint and provider route, prompts and serialization, environment, budgets and retry policy. Pin the route where possible. Record **effective** settings, not just requested ones: an agent may ignore or translate a reasoning setting, and model upgrades can alter reasoning or caching defaults. Even with good records, a provider can change an endpoint invisibly. [cite:YIxzNZDDy1A:c01] [cite:YIxzNZDDy1A:c10] [cite:wcUJWP6WpGM:c08]
+
+Pinning protects comparison with earlier runs but may also preserve a bug or prevent support for a new provider. One proposed compromise is to backport only necessary changes; document them and treat a changed dataset or protocol as a new comparison rather than silently joining scores. Reproducing a known benchmark can expose pipeline problems, but matching one published number does not validate every component. [cite:YIxzNZDDy1A:c02] [cite:wcUJWP6WpGM:c08]
+
+## Reset state, then preserve the rollout
+
+Give each task and trial a fresh provisioned sandbox or an equivalent reset to the same initial state. Otherwise an earlier agent can change files or database records that a later one sees. Provision dependencies, run to the specified stopping condition, save the trajectory and resulting state, verify the outcome, and collect artifacts before teardown. Isolate concurrent runs and clean up their resources so they do not clobber one another. Multiple trials reveal variability; identical initial states do not guarantee statistically independent outcomes or production fidelity. [cite:kRJjSOYqW0I:c02] [cite:jRCpXUjz4CI:c04] [cite:XyV6bSMyq-I:c04]
+
+A real tool may be relevant but difficult to reset. A mock or simulator can provide controlled state, even a planted solvable answer, at the cost of uncertain fidelity. Validate that tradeoff separately; a controllable world is not automatically representative of production. See [[build-and-validate-simulated-agent-worlds]]. [cite:AQv3qRCG6Gw:c07]
+
+## Separate infrastructure failures from agent failures
+
+A provider rate limit, exhausted memory, a bad system clock or an external service outage can spoil an otherwise valid comparison. Size concurrency against endpoint and sandbox capacity, and inspect environment health. One benchmark team reported images with a default clock around 1970 that broke time-dependent tests; that incident illustrates noise, not a measured share of all errors. [cite:YIxzNZDDy1A:c07] [cite:wcUJWP6WpGM:c04]
+
+Before running, define which statuses warrant retries and how ambiguous cases are adjudicated. Retry a diagnosed infrastructure outage under the declared rule, retaining the original failure and retry record. Do not erase a crash caused by the agent's own actions: that is part of its observed behavior. Context-limit exits and excessive calls require an explicit policy, not selective reruns after seeing scores. Attribution remains a diagnostic judgment, not a universally solved classification problem. [cite:YIxzNZDDy1A:c09] [cite:wcUJWP6WpGM:c07]
+
+For task selection and the meaning of success, continue with [[choosing-and-designing-agent-benchmarks]] and [[scoring-outcomes-and-diagnosing-behavior]].
